@@ -522,4 +522,11 @@ async def cmd_status(interaction: discord.Interaction):
     await interaction.response.send_message(f"📊 **Báo cáo nhanh:** Hệ thống đã hoàn tất `{completed_count}` nhiệm vụ trong phiên này.", ephemeral=True)
 
 if __name__ == "__main__":
-    bot.run("YOUR_BOT_TOKEN_HERE")
+    import os
+    # Đọc giá trị từ biến môi trường trên Render có tên là YOUR_BOT_TOKEN_HERE
+    TOKEN = os.getenv("YOUR_BOT_TOKEN_HERE")
+    
+    if TOKEN is None:
+        print("Lỗi: Không tìm thấy Token! Vui lòng kiểm tra lại Environment Variables.")
+    else:
+        bot.run(TOKEN)
