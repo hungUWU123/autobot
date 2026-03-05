@@ -480,6 +480,20 @@ class QuestBot(discord.Client):
 
     async def setup_hook(self):
         await self.tree.sync()
+        
+        from aiohttp import web
+        import os
+        
+        async def handle(request):
+            return web.Response(text="Xoai Xanh Bot is Alive!")
+            
+        app = web.Application()
+        app.add_routes([web.get('/', handle)])
+        runner = web.AppRunner(app)
+        await runner.setup()
+        port = int(os.environ.get("PORT", 8080))
+        site = web.TCPSite(runner, '0.0.0.0', port)
+        await site.start()
 
 bot = QuestBot()
 
@@ -530,3 +544,4 @@ if __name__ == "__main__":
         print("Lỗi: Không tìm thấy Token! Vui lòng kiểm tra lại Environment Variables.")
     else:
         bot.run(TOKEN)
+
