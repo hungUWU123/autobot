@@ -508,7 +508,7 @@ async def cmd_quest(interaction: discord.Interaction, token: str):
     embed.description = "> Việc cung cấp Token cá nhân chứa đựng những rủi ro bảo mật nhất định.\n> Hãy đảm bảo bạn hiểu rõ cơ chế trước khi xác nhận tiến hành."
     view = TermsView(token, interaction.user)
     
-    await interaction.response.send_message(embed=embed, view=view, ephemeral=False)
+    await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
 @bot.tree.command(name="cancel", description="Đóng băng và hủy bỏ tiến trình hiện tại")
 async def cmd_cancel(interaction: discord.Interaction):
@@ -537,11 +537,9 @@ async def cmd_status(interaction: discord.Interaction):
 
 if __name__ == "__main__":
     import os
-    # Đọc giá trị từ biến môi trường trên Render có tên là YOUR_BOT_TOKEN_HERE
     TOKEN = os.getenv("YOUR_BOT_TOKEN_HERE")
     
     if TOKEN is None:
-        print("Lỗi: Không tìm thấy Token! Vui lòng kiểm tra lại Environment Variables.")
+        pass
     else:
         bot.run(TOKEN)
-
