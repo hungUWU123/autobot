@@ -537,7 +537,7 @@ async def cmd_status(interaction: discord.Interaction):
 
 if __name__ == "__main__":
     import os
-    TOKEN = os.getenv("DISCORD_BOT_TOKEN") or "MTQ3MjQ2MzE1MTc3MjQ3MTMxOA.GXYEY6.QJ_0YFaHF19DgFCsD6uPhTuhEe9E-p_knV5HAY"
+    TOKEN = os.getenv("DISCORD_BOT_TOKEN") 
     
     if not TOKEN:
         print("Error: DISCORD_BOT_TOKEN not found.")
